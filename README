@@ -1,3 +1,5 @@
 Simple guestbook with vaadin.
 To run with gradle command gradle bootRun
 To build jar command: gradle build
+
+There are two users: user/user and admin/admin
