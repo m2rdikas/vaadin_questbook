@@ -1,0 +1,56 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.5.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+apply plugin: 'application'
+
+jar {
+    baseName = 'vaadin_guestbook'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    maven { url "https://repository.jboss.org/nexus/content/repositories/releases" }
+    maven { url "http://oss.sonatype.org/content/repositories/vaadin-snapshots/" }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+configurations {
+	provided
+    compile.extendsFrom provided
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.vaadin.spring.extensions:vaadin-spring-ext-security:0.0.7-SNAPSHOT")
+    compile("org.vaadin.spring.extensions:vaadin-spring-ext-core:0.0.7-SNAPSHOT")
+    compile("org.vaadin.spring.extensions:vaadin-spring-ext-boot:0.0.7-SNAPSHOT")
+    compile("org.vaadin.spring.addons:vaadin-spring-addon-eventbus:0.0.7-SNAPSHOT")
+    compile("com.vaadin:vaadin-spring-boot:1.0.0")
+    compile("com.vaadin:vaadin-push:7.4.4")
+    compile("com.vaadin:vaadin-themes:7.4.4")
+    compile("com.vaadin:vaadin-client-compiled:7.4.4")
+    compile("com.h2database:h2")
+    provided("org.projectlombok:lombok:1.16.4")
+    testCompile("junit:junit")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
+
