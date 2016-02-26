@@ -53,8 +53,6 @@ public class AdminView extends VerticalLayout implements View {
 	}
 	
 	private void doSearch() {
-//		resultList.setContainerDataSource(new BeanItemContainer<>(
-//              GuestEntry.class, service.findAllEntries()));
 		resultList.setContainerDataSource(new BeanItemContainer<>(
                 GuestEntry.class, service.filterEntries(firstName.getValue(), lastName.getValue())));
 	}
