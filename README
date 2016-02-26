@@ -1,0 +1,3 @@
+Simple guestbook with vaadin.
+To run with gradle command gradle bootRun
+To build jar command: gradle build
